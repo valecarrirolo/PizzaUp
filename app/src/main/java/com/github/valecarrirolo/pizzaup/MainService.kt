@@ -1,7 +1,6 @@
-package com.github.valecarrirolo.templateapp
+package com.github.valecarrirolo.pizzaup
 
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
-import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
 import okhttp3.MediaType

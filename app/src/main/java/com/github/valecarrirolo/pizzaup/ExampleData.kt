@@ -1,4 +1,4 @@
-package com.github.valecarrirolo.templateapp
+package com.github.valecarrirolo.pizzaup
 
 object ExampleData {
     val list = listOf<BasicItem>(

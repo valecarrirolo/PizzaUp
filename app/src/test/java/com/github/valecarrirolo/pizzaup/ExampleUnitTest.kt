@@ -1,4 +1,4 @@
-package com.github.valecarrirolo.templateapp
+package com.github.valecarrirolo.pizzaup
 
 import org.junit.Test
 

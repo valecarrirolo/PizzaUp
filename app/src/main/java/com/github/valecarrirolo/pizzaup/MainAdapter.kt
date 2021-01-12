@@ -1,9 +1,9 @@
-package com.github.valecarrirolo.templateapp
+package com.github.valecarrirolo.pizzaup
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.github.valecarrirolo.templateapp.databinding.ItemBasicBinding
+import com.github.valecarrirolo.pizzaup.databinding.ItemBasicBinding
 
 data class BasicItem(val title: String, val description: String)
 

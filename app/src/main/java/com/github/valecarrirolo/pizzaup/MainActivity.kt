@@ -1,11 +1,11 @@
-package com.github.valecarrirolo.templateapp
+package com.github.valecarrirolo.pizzaup
 
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.asLiveData
 import coil.load
-import com.github.valecarrirolo.templateapp.databinding.ActivityMainBinding
+import com.github.valecarrirolo.pizzaup.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
     val viewModel by viewModels<MainViewModel>()
