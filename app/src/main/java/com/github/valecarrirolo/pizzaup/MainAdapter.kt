@@ -2,14 +2,15 @@ package com.github.valecarrirolo.pizzaup
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import com.github.valecarrirolo.pizzaup.databinding.ItemPizzaBinding
 
 
 // Adapter
-class MainAdapter() : RecyclerView.Adapter<MainViewHolder>() {
+class MainAdapter(val viewmodel: MainViewModel) : RecyclerView.Adapter<MainViewHolder>() {
 
-    var dataSet: List<PizzaDetail> = emptyList()
+    var dataSet: List<NumPizzaDetail> = emptyList()
 
     // Create new views (invoked by the layout manager)
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): MainViewHolder {
@@ -26,6 +27,14 @@ class MainAdapter() : RecyclerView.Adapter<MainViewHolder>() {
         viewHolder.binding.title.text = item.name
         viewHolder.binding.price.text = format(item.price)
         viewHolder.binding.description.text = item.ingredients.joinToString()
+        viewHolder.binding.numpizza.text = item.num.toString()
+        viewHolder.binding.root.setOnClickListener {
+            viewmodel.addPizza(item)
+        }
+        viewHolder.binding.lesspizza.isVisible = item.num > 0
+        viewHolder.binding.lesspizza.setOnClickListener {
+            viewmodel.removePizza(item)
+        }
     }
 
     fun format(price: Double): String {
@@ -36,9 +45,9 @@ class MainAdapter() : RecyclerView.Adapter<MainViewHolder>() {
         }
     }
 
+
     // Return the size of your dataset (invoked by the layout manager)
     override fun getItemCount() = dataSet.size
-
 }
 
 // ViewHolder

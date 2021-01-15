@@ -20,11 +20,12 @@ class MainActivity : AppCompatActivity() {
         binding.imageExample.load("https://wips.plug.it/cips/initalia.virgilio.it/cms/2020/03/pizza.jpg")
 
         // RecyclerView List
-        val adapter = MainAdapter()
+        val adapter = MainAdapter(viewModel)
         binding.recyclerViewExample.adapter = adapter
         viewModel.pizzas.asLiveData().observe(this) { pizzaList ->
             adapter.dataSet = pizzaList
             adapter.notifyDataSetChanged()
+
         }
 
     }
