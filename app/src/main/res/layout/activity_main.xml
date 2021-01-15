@@ -13,36 +13,13 @@
         android:layout_height="150dp"
         tools:srcCompat="@tools:sample/avatars" />
 
-    <TextView
-        android:id="@+id/textExample"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        android:textAlignment="center"
-        tools:text="Random number" />
-
-    <TextView
-        android:id="@+id/personExample"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        android:textAlignment="center"
-        tools:text="Person detail" />
-
-    <Button
-        android:id="@+id/buttonExample"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        android:text="Button" />
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewExample"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        tools:listitem="@layout/item_basic" />
+        tools:listitem="@layout/item_pizza" />
 
 
 </LinearLayout>

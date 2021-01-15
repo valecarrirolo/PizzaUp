@@ -9,8 +9,8 @@ import retrofit2.http.GET
 
 interface DevService {
 
-    @GET("quotes.json")
-    suspend fun getQuote(): List<QuoteResponse>
+    @GET("pizzas.json")
+    suspend fun getPizza(): PizzaResponse
 
     companion object {
         fun create(): DevService {
@@ -27,7 +27,13 @@ interface DevService {
 }
 
 @Serializable
-data class QuoteResponse (
-    val author: String,
-    val quotes: List<String>
+data class PizzaResponse(
+    val pizzas : List<PizzaDetail>
+)
+
+@Serializable
+data class PizzaDetail (
+    val name: String,
+    val price: Double,
+    val ingredients: List<String>
 )
