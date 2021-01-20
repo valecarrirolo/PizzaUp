@@ -4,13 +4,20 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.launch
 import java.io.IOException
 
 class MainViewModel : ViewModel() {
     private val _pizzas = MutableStateFlow<List<NumPizzaDetail>>(emptyList())
-    val pizzas = _pizzas.asStateFlow()
+    // val pizzas = _pizzas.asStateFlow()
 
+    private val _isFiltered = MutableStateFlow<Boolean>(false)
+    val isFiltered = _isFiltered.asStateFlow()
+
+    val filteredPizza = combine(_pizzas, _isFiltered) { pizzas, isFiltered ->
+        if (isFiltered) pizzas.filter { it.num > 0 } else pizzas
+    }
 
     private val devClient = DevService.create()
 
@@ -47,14 +54,18 @@ class MainViewModel : ViewModel() {
 
     fun removePizza(item: NumPizzaDetail) {
         _pizzas.value = _pizzas.value.map {
-            if(it == item && it.num != 0){
-                it.copy(num = it.num -1)
-            }else{
+            if (it == item && it.num != 0) {
+                it.copy(num = it.num - 1)
+            } else {
                 it
             }
         }
-
     }
+
+    fun recapPizza() {
+        _isFiltered.value = !_isFiltered.value
+    }
+
 }
 
 data class NumPizzaDetail(

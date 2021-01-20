@@ -22,11 +22,17 @@ class MainActivity : AppCompatActivity() {
         // RecyclerView List
         val adapter = MainAdapter(viewModel)
         binding.recyclerViewExample.adapter = adapter
-        viewModel.pizzas.asLiveData().observe(this) { pizzaList ->
+        viewModel.filteredPizza.asLiveData().observe(this) { pizzaList ->
             adapter.dataSet = pizzaList
             adapter.notifyDataSetChanged()
-
         }
 
+        // Button and Observe on isFiltered()
+        viewModel.isFiltered.asLiveData().observe(this){isFiltered ->
+            binding.buttonRecap.text = if (isFiltered)"Lista completa" else "Pizze ordinate"
+        }
+        binding.buttonRecap.setOnClickListener {
+            viewModel.recapPizza()
+        }
     }
 }
