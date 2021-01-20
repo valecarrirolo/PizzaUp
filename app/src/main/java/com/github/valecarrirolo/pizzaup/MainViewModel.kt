@@ -65,7 +65,6 @@ class MainViewModel : ViewModel() {
     fun recapPizza() {
         _isFiltered.value = !_isFiltered.value
     }
-
 }
 
 data class NumPizzaDetail(
