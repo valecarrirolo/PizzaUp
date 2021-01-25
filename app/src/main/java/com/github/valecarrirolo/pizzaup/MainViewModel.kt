@@ -45,7 +45,7 @@ class MainViewModel : ViewModel() {
 
     fun addPizza(item: NumPizzaDetail) {
         _pizzas.value = _pizzas.value.map {
-            if (it == item) {
+            if (it == item && item.num < 20) {
                 it.copy(num = it.num + 1)
             } else {
                 it
