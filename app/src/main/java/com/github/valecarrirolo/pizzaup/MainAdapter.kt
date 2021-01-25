@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
+import coil.load
 import com.github.valecarrirolo.pizzaup.databinding.ItemPizzaBinding
 
 
@@ -25,6 +26,7 @@ class MainAdapter(val viewmodel: MainViewModel) : RecyclerView.Adapter<MainViewH
     override fun onBindViewHolder(viewHolder: MainViewHolder, position: Int) {
         val item = dataSet[position]
         viewHolder.binding.title.text = item.name
+        viewHolder.binding.photo.load("https://raw.githubusercontent.com/nemsi85/dev-server/master/${item.photo}")
         viewHolder.binding.price.text = format(item.price)
         viewHolder.binding.description.text = item.ingredients.joinToString()
         viewHolder.binding.numpizza.text = item.num.toString()

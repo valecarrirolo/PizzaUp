@@ -17,7 +17,7 @@ class MainActivity : AppCompatActivity() {
         val binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         // Image loading
-        binding.imageExample.load("https://wips.plug.it/cips/initalia.virgilio.it/cms/2020/03/pizza.jpg")
+        binding.imageExample.load("https://raw.githubusercontent.com/nemsi85/dev-server/master/pizza.jpg")
 
         // RecyclerView List
         val adapter = MainAdapter(viewModel)

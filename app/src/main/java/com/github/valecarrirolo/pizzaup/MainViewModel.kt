@@ -31,6 +31,7 @@ class MainViewModel : ViewModel() {
                 _pizzas.value = devClient.getPizza().pizzas.map {
                     NumPizzaDetail(
                         it.name,
+                        it.photo,
                         it.price,
                         it.ingredients,
                         0
@@ -69,6 +70,7 @@ class MainViewModel : ViewModel() {
 
 data class NumPizzaDetail(
     val name: String,
+    val photo: String,
     val price: Double,
     val ingredients: List<String>,
     val num: Int

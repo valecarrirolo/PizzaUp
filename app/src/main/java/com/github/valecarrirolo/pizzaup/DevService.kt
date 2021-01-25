@@ -6,6 +6,7 @@ import kotlinx.serialization.json.Json
 import okhttp3.MediaType
 import retrofit2.Retrofit
 import retrofit2.http.GET
+import retrofit2.http.Url
 
 interface DevService {
 
@@ -35,5 +36,6 @@ data class PizzaResponse(
 data class PizzaDetail (
     val name: String,
     val price: Double,
+    val photo: String,
     val ingredients: List<String>
 )
