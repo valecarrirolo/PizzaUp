@@ -1,5 +1,6 @@
 package com.github.valecarrirolo.pizzaup
 
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.view.isVisible
@@ -33,6 +34,12 @@ class MainAdapter(val viewmodel: MainViewModel) : RecyclerView.Adapter<MainViewH
         viewHolder.binding.root.setOnClickListener {
             viewmodel.addPizza(item)
         }
+        viewHolder.binding.root.setBackgroundColor(
+            if (item.num >= 1) { Color.parseColor("#af8eb5")
+            } else {
+                Color.parseColor("#ffffff")
+            }
+        )
         viewHolder.binding.lesspizza.isVisible = item.num > 0
         viewHolder.binding.lesspizza.setOnClickListener {
             viewmodel.removePizza(item)
