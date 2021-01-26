@@ -35,7 +35,7 @@ class MainAdapter(val viewmodel: MainViewModel) : RecyclerView.Adapter<MainViewH
             viewmodel.addPizza(item)
         }
         viewHolder.binding.root.setBackgroundColor(
-            if (item.num >= 1) { Color.parseColor("#af8eb5")
+            if (item.num >= 1) { Color.parseColor("#f3e5f5")
             } else {
                 Color.parseColor("#ffffff")
             }
