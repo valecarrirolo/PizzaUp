@@ -1,8 +1,8 @@
 package com.github.valecarrirolo.pizzaup
 
-import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
@@ -26,6 +26,7 @@ class MainAdapter(val viewmodel: MainViewModel) : RecyclerView.Adapter<MainViewH
     // Replace the contents of a view (invoked by the layout manager)
     override fun onBindViewHolder(viewHolder: MainViewHolder, position: Int) {
         val item = dataSet[position]
+        val context = viewHolder.binding.root.context
         viewHolder.binding.title.text = item.name
         viewHolder.binding.photo.load("https://raw.githubusercontent.com/nemsi85/dev-server/master/${item.photo}")
         viewHolder.binding.price.text = format(item.price)
@@ -35,12 +36,23 @@ class MainAdapter(val viewmodel: MainViewModel) : RecyclerView.Adapter<MainViewH
             viewmodel.addPizza(item)
         }
         viewHolder.binding.root.setBackgroundColor(
-            Color.parseColor(if (item.num >= 1) "#f3e5f5" else "#ffffff"))
+            ContextCompat.getColor(
+                context,
+                if (item.num >= 1) R.color.purple_50 else R.color.white
+            )
+        )
         viewHolder.binding.title.setTextColor(
-            Color.parseColor(if (item.num >= 1) "#FF3700B3" else "#ffffff"))
+            ContextCompat.getColor(
+                context,
+                if (item.num >= 1) R.color.purple_700 else R.color.black
+            )
+        )
         viewHolder.binding.numpizza.setTextColor(
-            Color.parseColor(if (item.num >= 1) "#FF3700B3" else "#ffffff"))
-
+            ContextCompat.getColor(
+                context,
+                if (item.num >= 1) R.color.purple_700 else R.color.black
+            )
+        )
         viewHolder.binding.lesspizza.isVisible = item.num > 0
         viewHolder.binding.lesspizza.setOnClickListener {
             viewmodel.removePizza(item)
