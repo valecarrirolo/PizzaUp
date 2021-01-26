@@ -37,13 +37,12 @@
 
         <TextView
             android:id="@+id/title"
-
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
             android:fontFamily="@font/advent_pro_bold"
-            android:text="TextView"
+            tools:text="Pizza"
             android:textAllCaps="true"
             android:textSize="24sp"
             app:layout_constraintEnd_toStartOf="@+id/price"
@@ -59,7 +58,7 @@
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
             android:fontFamily="@font/advent_pro_bold"
-            android:text="TextView"
+            tools:text="Price"
             android:textSize="24sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
@@ -72,7 +71,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:fontFamily="@font/advent_pro_light"
-            android:text="TextView"
+            tools:text="Description"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/photo"
