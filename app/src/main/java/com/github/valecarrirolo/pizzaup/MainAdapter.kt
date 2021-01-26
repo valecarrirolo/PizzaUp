@@ -35,11 +35,12 @@ class MainAdapter(val viewmodel: MainViewModel) : RecyclerView.Adapter<MainViewH
             viewmodel.addPizza(item)
         }
         viewHolder.binding.root.setBackgroundColor(
-            if (item.num >= 1) { Color.parseColor("#f3e5f5")
-            } else {
-                Color.parseColor("#ffffff")
-            }
-        )
+            Color.parseColor(if (item.num >= 1) "#f3e5f5" else "#ffffff"))
+        viewHolder.binding.title.setTextColor(
+            Color.parseColor(if (item.num >= 1) "#FF3700B3" else "#ffffff"))
+        viewHolder.binding.numpizza.setTextColor(
+            Color.parseColor(if (item.num >= 1) "#FF3700B3" else "#ffffff"))
+
         viewHolder.binding.lesspizza.isVisible = item.num > 0
         viewHolder.binding.lesspizza.setOnClickListener {
             viewmodel.removePizza(item)

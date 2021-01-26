@@ -42,6 +42,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
+            android:clickable="false"
             android:fontFamily="@font/advent_pro_bold"
             android:textAllCaps="true"
             android:textSize="24sp"
