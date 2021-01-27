@@ -12,8 +12,7 @@
     <!-- PizzaUp Theme palette -->
 
     <!-- Green Primary Color -->
-    <color name="lime_50">#f8ffd7</color>
-    <color name="green_500">#4CAF50</color>
+    <color name="lime_200_light">#f8ffd7</color>
     <color name="green_500_light">#80e27e</color>
     <color name="green_800">#2E7D32</color>
     <color name="green_800_dark">#005005</color>

@@ -38,13 +38,13 @@ class MainAdapter(val viewmodel: MainViewModel) : RecyclerView.Adapter<MainViewH
         viewHolder.binding.root.setBackgroundColor(
             ContextCompat.getColor(
                 context,
-                if (item.num >= 1) R.color.lime_50 else R.color.yellow_50
+                if (item.num >= 1) R.color.lime_200_light else R.color.yellow_50
             )
         )
         viewHolder.binding.title.setTextColor(
             ContextCompat.getColor(
                 context,
-                if (item.num >= 1) R.color.deep_orange_800_dark else R.color.yellow_50
+                if (item.num >= 1) R.color.deep_orange_800_dark else R.color.black
             )
         )
         viewHolder.binding.numpizza.setTextColor(
