@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">PizzaUp</string>
     <string name="remove">Rimuovi</string>
+    <string name="pizzaup">PizzaUP</string>
 </resources>
