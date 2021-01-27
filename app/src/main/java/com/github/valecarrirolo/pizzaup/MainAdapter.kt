@@ -38,19 +38,19 @@ class MainAdapter(val viewmodel: MainViewModel) : RecyclerView.Adapter<MainViewH
         viewHolder.binding.root.setBackgroundColor(
             ContextCompat.getColor(
                 context,
-                if (item.num >= 1) R.color.purple_50 else R.color.white
+                if (item.num >= 1) R.color.lime_50 else R.color.yellow_50
             )
         )
         viewHolder.binding.title.setTextColor(
             ContextCompat.getColor(
                 context,
-                if (item.num >= 1) R.color.purple_700 else R.color.black
+                if (item.num >= 1) R.color.deep_orange_800_dark else R.color.yellow_50
             )
         )
         viewHolder.binding.numpizza.setTextColor(
             ContextCompat.getColor(
                 context,
-                if (item.num >= 1) R.color.purple_700 else R.color.black
+                if (item.num >= 1) R.color.deep_orange_800_dark else R.color.yellow_50
             )
         )
         viewHolder.binding.lesspizza.isVisible = item.num > 0

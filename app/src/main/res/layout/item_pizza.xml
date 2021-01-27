@@ -92,7 +92,7 @@
             android:textAlignment="center"
             android:textSize="12sp"
             android:textStyle="bold"
-            app:backgroundTint="@color/design_default_color_primary_dark"
+            app:backgroundTint="@color/deep_orange_800"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/description" />
 
