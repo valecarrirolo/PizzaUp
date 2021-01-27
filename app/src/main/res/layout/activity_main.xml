@@ -4,20 +4,24 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="?android:attr/colorBackground"
+    android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <!-- <TextView
-        android:id="@+id/titleAPp"
+    <TextView
+        android:id="@+id/noneSelected"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/green_800"
+        android:background="@color/deep_orange_800"
         android:fontFamily="@font/advent_pro_bold"
-        android:text="@string/pizzaup"
+        android:text="@string/noPizzaSelected"
         android:textAlignment="center"
+        android:textAllCaps="true"
+        android:textColor="@color/white"
         android:textSize="40sp"
-        android:textStyle="bold" /> -->
+        android:textStyle="bold"
+        android:visibility="gone"
+        tools:visibility="visible" />
 
     <!--<ImageView
         android:id="@+id/imageExample"
@@ -45,12 +49,12 @@
         android:id="@+id/buttonRecap"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:text="Button"
         android:fontFamily="@font/advent_pro_light"
         android:textAlignment="center"
         android:textSize="12sp"
         android:textStyle="bold"
-        app:backgroundTint="?attr/colorSecondaryVariant"/>
+        app:backgroundTint="?attr/colorSecondaryVariant"
+        tools:text="Button" />
 
 
 </LinearLayout>

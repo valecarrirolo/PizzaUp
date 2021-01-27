@@ -34,11 +34,18 @@ class MainActivity : AppCompatActivity() {
         }
 
         // Button and Observe on isFiltered()
-        viewModel.isFiltered.asLiveData().observe(this) { isFiltered ->
+        viewModel.isFiltered.asLiveData().observe(this) { isFiltered: Boolean ->
             binding.buttonRecap.text = if (isFiltered) "Lista completa" else "Pizze ordinate"
         }
         binding.buttonRecap.setOnClickListener {
             viewModel.recapPizza()
         }
+
+        // Message No Pizza Selected / Empty list
+        viewModel.isPizzasEmpty.asLiveData().observe(this) {isPizzasEmpty: Boolean ->
+            binding.noneSelected.isVisible = isPizzasEmpty
+
+        }
+
     }
 }

@@ -22,6 +22,10 @@ class MainViewModel : ViewModel() {
     private val _isLoading = MutableStateFlow<Boolean>(false)
     val isLoading = _isLoading.asStateFlow()
 
+    val isPizzasEmpty = combine(filteredPizza, isLoading) { filteredPizza, isLoading ->
+        filteredPizza.isEmpty() && !isLoading
+    }
+
     private val devClient = DevService.create()
 
     init {

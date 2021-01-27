@@ -2,4 +2,5 @@
     <string name="app_name">PizzaUp</string>
     <string name="remove">Rimuovi</string>
     <string name="pizzaup">PizzaUP</string>
+    <string name="noPizzaSelected">nessuna pizza selezionata</string>
 </resources>
