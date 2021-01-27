@@ -25,6 +25,13 @@
         android:layout_height="85dp"
         tools:srcCompat="@tools:sample/avatars" /> -->
 
+    <ProgressBar
+        android:id="@+id/progress_loader"
+        style="@android:style/Widget.DeviceDefault.Light.ProgressBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="visible" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewExample"
         android:layout_width="match_parent"

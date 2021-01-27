@@ -19,6 +19,9 @@ class MainViewModel : ViewModel() {
         if (isFiltered) pizzas.filter { it.num > 0 } else pizzas
     }
 
+    private val _isLoading = MutableStateFlow<Boolean>(false)
+    val isLoading = _isLoading.asStateFlow()
+
     private val devClient = DevService.create()
 
     init {
@@ -28,6 +31,7 @@ class MainViewModel : ViewModel() {
     fun getPizza() {
         viewModelScope.launch {
             try {
+                _isLoading.value = true
                 _pizzas.value = devClient.getPizza().pizzas.map {
                     NumPizzaDetail(
                         it.name,
@@ -37,8 +41,10 @@ class MainViewModel : ViewModel() {
                         0
                     )
                 }
+                _isLoading.value = false
             } catch (e: IOException) {
                 println("getPizza() fail: $e")
+                _isLoading.value = false
             }
         }
     }
