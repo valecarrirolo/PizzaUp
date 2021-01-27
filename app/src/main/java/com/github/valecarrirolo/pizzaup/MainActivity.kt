@@ -21,7 +21,7 @@ class MainActivity : AppCompatActivity() {
         // binding.imageExample.load("https://raw.githubusercontent.com/nemsi85/dev-server/master/pizza.jpg")
 
         // Progress Bar Loading
-        viewModel.isLoading.asLiveData().observe(this) { isLoading ->
+        viewModel.isLoading.asLiveData().observe(this) { isLoading: Boolean ->
             binding.progressLoader.isVisible = isLoading // == true
         }
 
