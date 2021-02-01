@@ -28,7 +28,7 @@ class MainActivity : AppCompatActivity() {
         // RecyclerView List
         val adapter = MainAdapter(viewModel)
         binding.recyclerViewExample.adapter = adapter
-        viewModel.filteredPizza.asLiveData().observe(this) { pizzaList ->
+        viewModel.currentPizzas.asLiveData().observe(this) { pizzaList ->
             adapter.dataSet = pizzaList
             adapter.notifyDataSetChanged()
         }

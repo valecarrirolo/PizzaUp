@@ -9,20 +9,20 @@ import kotlinx.coroutines.launch
 import java.io.IOException
 
 class MainViewModel : ViewModel() {
-    private val _pizzas = MutableStateFlow<List<NumPizzaDetail>>(emptyList())
-    // val pizzas = _pizzas.asStateFlow()
+    private val _allPizzas = MutableStateFlow<List<NumPizzaDetail>>(emptyList())
+    // val allPizzas = _allPizzas.asStateFlow()
 
     private val _isFiltered = MutableStateFlow<Boolean>(false)
     val isFiltered = _isFiltered.asStateFlow()
 
-    val filteredPizza = combine(_pizzas, _isFiltered) { pizzas, isFiltered ->
-        if (isFiltered) pizzas.filter { it.num > 0 } else pizzas
+    val currentPizzas = combine(_allPizzas, _isFiltered) { allPizzas, isFiltered ->
+        if (isFiltered) allPizzas.filter { it.num > 0 } else allPizzas
     }
 
     private val _isLoading = MutableStateFlow<Boolean>(false)
     val isLoading = _isLoading.asStateFlow()
 
-    val isPizzasEmpty = combine(filteredPizza, isLoading) { filteredPizza, isLoading ->
+    val isPizzasEmpty = combine(currentPizzas, isLoading) { filteredPizza, isLoading ->
         filteredPizza.isEmpty() && !isLoading
     }
 
@@ -36,7 +36,7 @@ class MainViewModel : ViewModel() {
         viewModelScope.launch {
             try {
                 _isLoading.value = true
-                _pizzas.value = devClient.getPizza().pizzas.map {
+                _allPizzas.value = devClient.getPizza().pizzas.map {
                     NumPizzaDetail(
                         it.name,
                         it.photo,
@@ -54,7 +54,7 @@ class MainViewModel : ViewModel() {
     }
 
     fun addPizza(item: NumPizzaDetail) {
-        _pizzas.value = _pizzas.value.map {
+        _allPizzas.value = _allPizzas.value.map {
             if (it == item && item.num < 20) {
                 it.copy(num = it.num + 1)
             } else {
@@ -64,7 +64,7 @@ class MainViewModel : ViewModel() {
     }
 
     fun removePizza(item: NumPizzaDetail) {
-        _pizzas.value = _pizzas.value.map {
+        _allPizzas.value = _allPizzas.value.map {
             if (it == item && it.num != 0) {
                 it.copy(num = it.num - 1)
             } else {
@@ -76,6 +76,10 @@ class MainViewModel : ViewModel() {
     fun recapPizza() {
         _isFiltered.value = !_isFiltered.value
     }
+
+   fun redLightOn(){
+
+   }
 }
 
 data class NumPizzaDetail(
