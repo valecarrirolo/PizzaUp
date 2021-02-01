@@ -5,9 +5,7 @@ import androidx.lifecycle.viewModelScope
 import com.github.omarmiatello.yeelight.YeelightManager
 import com.github.omarmiatello.yeelight.home.studio1
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.asStateFlow
-import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 import java.io.IOException
 
@@ -33,6 +31,13 @@ class MainViewModel : ViewModel() {
 
     init {
         getPizza()
+        _allPizzas.onEach { allPizzas ->
+            val margherita = allPizzas.firstOrNull() {
+                it.name.toLowerCase() == "margherita"
+            }
+            if (margherita != null) redLightOn(margherita)
+
+        }.launchIn(viewModelScope)
     }
 
     fun getPizza() {
@@ -59,9 +64,7 @@ class MainViewModel : ViewModel() {
     fun addPizza(item: NumPizzaDetail) {
         _allPizzas.value = _allPizzas.value.map {
             if (it == item && item.num < 20) {
-                val new = it.copy(num = it.num + 1)
-                redLightOn(new)
-                new
+                it.copy(num = it.num + 1)
             } else {
                 it
             }
@@ -71,9 +74,7 @@ class MainViewModel : ViewModel() {
     fun removePizza(item: NumPizzaDetail) {
         _allPizzas.value = _allPizzas.value.map {
             if (it == item && it.num != 0) {
-               val new = it.copy(num = it.num - 1)
-                redLightOn(new)
-                new
+                it.copy(num = it.num - 1)
             } else {
                 it
             }
