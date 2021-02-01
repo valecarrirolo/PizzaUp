@@ -65,4 +65,8 @@ dependencies {
     testImplementation 'junit:junit:4.13.1'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+
+    // Yeelight Kotlin library
+    implementation 'com.github.omarmiatello.yeelight:core:1.0.2'
+    implementation 'com.github.omarmiatello.yeelight:home-ktx:1.0.2'
 }
