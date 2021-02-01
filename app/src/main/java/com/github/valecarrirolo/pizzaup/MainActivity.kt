@@ -44,8 +44,6 @@ class MainActivity : AppCompatActivity() {
         // Message No Pizza Selected / Empty list
         viewModel.isPizzasEmpty.asLiveData().observe(this) {isPizzasEmpty: Boolean ->
             binding.noneSelected.isVisible = isPizzasEmpty
-
         }
-
     }
 }

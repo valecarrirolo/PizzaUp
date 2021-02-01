@@ -2,6 +2,9 @@ package com.github.valecarrirolo.pizzaup
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.github.omarmiatello.yeelight.YeelightManager
+import com.github.omarmiatello.yeelight.home.studio1
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.combine
@@ -25,7 +28,7 @@ class MainViewModel : ViewModel() {
     val isPizzasEmpty = combine(currentPizzas, isLoading) { filteredPizza, isLoading ->
         filteredPizza.isEmpty() && !isLoading
     }
-
+    private val yeelight = YeelightManager()
     private val devClient = DevService.create()
 
     init {
@@ -56,7 +59,9 @@ class MainViewModel : ViewModel() {
     fun addPizza(item: NumPizzaDetail) {
         _allPizzas.value = _allPizzas.value.map {
             if (it == item && item.num < 20) {
-                it.copy(num = it.num + 1)
+                val new = it.copy(num = it.num + 1)
+                redLightOn(new)
+                new
             } else {
                 it
             }
@@ -66,7 +71,9 @@ class MainViewModel : ViewModel() {
     fun removePizza(item: NumPizzaDetail) {
         _allPizzas.value = _allPizzas.value.map {
             if (it == item && it.num != 0) {
-                it.copy(num = it.num - 1)
+               val new = it.copy(num = it.num - 1)
+                redLightOn(new)
+                new
             } else {
                 it
             }
@@ -77,9 +84,19 @@ class MainViewModel : ViewModel() {
         _isFiltered.value = !_isFiltered.value
     }
 
-   fun redLightOn(){
-
-   }
+    fun redLightOn(item: NumPizzaDetail) {
+        // NetworkOnMainThreadException -> coroutine non può funzionare sul main thread e va spostata con (context = Dispatchers.IO)
+        viewModelScope.launch(context = Dispatchers.IO) {
+            if (item.name.toLowerCase() == "margherita") {
+                if (item.num >= 1) {
+                    yeelight.studio1().setPower(true)
+                    yeelight.studio1().setColorRgb(0xFF0000)
+                } else {
+                    yeelight.studio1().setWhiteTemperature(5000)
+                }
+            }
+        }
+    }
 }
 
 data class NumPizzaDetail(
