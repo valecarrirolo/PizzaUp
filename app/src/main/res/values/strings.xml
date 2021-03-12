@@ -3,4 +3,9 @@
     <string name="remove">Rimuovi</string>
     <string name="pizzaup">PizzaUP</string>
     <string name="noPizzaSelected">nessuna pizza selezionata</string>
+    <string name="title_activity_main2">MainActivity</string>
+    <string name="title_pizza_list">Pizzas</string>
+    <string name="title_ordered">Order</string>
+    <string name="title_pay">Pay</string>
+    <string name="title_contacts">Contacts</string>
 </resources>

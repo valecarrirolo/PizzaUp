@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navPizzaList">
+
+    <fragment
+        android:id="@+id/navContacts"
+        android:name="com.github.valecarrirolo.pizzaup.ui.ContactsFragment"
+        android:label="@string/title_contacts"
+        tools:layout="@layout/fragment_contacts" />
+
+    <fragment
+        android:id="@+id/navPizzaList"
+        android:name="com.github.valecarrirolo.pizzaup.ui.PizzaListFragment"
+        android:label="@string/title_pizza_list"
+        tools:layout="@layout/fragment_pizzalist" />
+
+    <fragment
+        android:id="@+id/navOrdered"
+        android:name="com.github.valecarrirolo.pizzaup.ui.OrderedFragment"
+        android:label="@string/title_ordered"
+        tools:layout="@layout/fragment_ordered" />
+
+    <fragment
+        android:id="@+id/navPay"
+        android:name="com.github.valecarrirolo.pizzaup.ui.PayFragment"
+        android:label="@string/title_pay"
+        tools:layout="@layout/fragment_pay" />
+
+</navigation>

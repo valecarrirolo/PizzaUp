@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navContacts"
+        android:icon="@drawable/ic_stone_oven"
+        android:title="@string/title_contacts" />
+
+    <item
+        android:id="@+id/navPizzaList"
+        android:icon="@drawable/ic_pizza"
+        android:title="@string/title_pizza_list" />
+
+    <item
+        android:id="@+id/navOrdered"
+        android:icon="@drawable/ic_delivery"
+        android:title="@string/title_ordered" />
+
+    <item
+        android:id="@+id/navPay"
+        android:icon="@drawable/ic_cashpay"
+        android:title="@string/title_pay" />
+
+</menu>

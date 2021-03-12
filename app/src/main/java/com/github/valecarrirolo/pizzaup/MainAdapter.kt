@@ -29,7 +29,7 @@ class MainAdapter(val viewmodel: MainViewModel) : RecyclerView.Adapter<MainViewH
         val context = viewHolder.binding.root.context
         viewHolder.binding.title.text = item.name
         viewHolder.binding.photo.load("https://raw.githubusercontent.com/nemsi85/dev-server/master/${item.photo}")
-        viewHolder.binding.price.text = format(item.price)
+        viewHolder.binding.price.text = formatPrice(item.price)
         viewHolder.binding.description.text = item.ingredients.joinToString()
         viewHolder.binding.numpizza.text = item.num.toString()
         viewHolder.binding.root.setOnClickListener {
@@ -56,14 +56,6 @@ class MainAdapter(val viewmodel: MainViewModel) : RecyclerView.Adapter<MainViewH
         viewHolder.binding.lesspizza.isVisible = item.num > 0
         viewHolder.binding.lesspizza.setOnClickListener {
             viewmodel.removePizza(item)
-        }
-    }
-
-    fun format(price: Double): String {
-        return if (price.toInt().toDouble() == price) {
-            "${price.toInt()}€"
-        } else {
-            "${price}€"
         }
     }
 

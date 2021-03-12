@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.OrderedFragment">
+
+    <ProgressBar
+        android:id="@+id/progress_loader"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:progressBackgroundTintMode="?attr/colorPrimary"
+        android:visibility="visible" />
+
+    <TextView
+        android:id="@+id/noneSelected"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:background="?attr/colorSecondary"
+        android:fontFamily="@font/advent_pro_bold"
+        android:text="@string/noPizzaSelected"
+        android:textAlignment="center"
+        android:textAllCaps="true"
+        android:textColor="?attr/colorOnPrimary"
+        android:textSize="40sp"
+        android:textStyle="bold"
+        android:visibility="gone"
+        tools:visibility="visible" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewExample"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:clipToPadding="false"
+        android:paddingVertical="16dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        tools:listitem="@layout/item_pizza">
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+    <TextView
+        android:id="@+id/totalCost"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:background="?attr/colorSecondary"
+        android:fontFamily="@font/advent_pro_bold"
+        android:textAlignment="center"
+        android:textAllCaps="true"
+        android:textColor="?attr/colorOnPrimary"
+        android:textSize="40sp"
+        android:textStyle="bold"
+        android:text="$$$ recap" />
+
+    <Button
+        android:id="@+id/buttonPayment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:textAlignment="center"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:backgroundTint="?attr/colorPrimaryVariant"
+        tools:text="Pay" />
+
+
+</LinearLayout>

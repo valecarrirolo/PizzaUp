@@ -2,31 +2,31 @@ package com.github.valecarrirolo.pizzaup
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.github.omarmiatello.yeelight.YeelightManager
-import com.github.omarmiatello.yeelight.home.studio1
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 import java.io.IOException
 
 class MainViewModel : ViewModel() {
     private val _allPizzas = MutableStateFlow<List<NumPizzaDetail>>(emptyList())
-    // val allPizzas = _allPizzas.asStateFlow()
-
-    private val _isFiltered = MutableStateFlow<Boolean>(false)
-    val isFiltered = _isFiltered.asStateFlow()
-
-    val currentPizzas = combine(_allPizzas, _isFiltered) { allPizzas, isFiltered ->
-        if (isFiltered) allPizzas.filter { it.num > 0 } else allPizzas
-    }
+    val allPizzas = _allPizzas.asStateFlow()
 
     private val _isLoading = MutableStateFlow<Boolean>(false)
     val isLoading = _isLoading.asStateFlow()
 
-    val isPizzasEmpty = combine(currentPizzas, isLoading) { filteredPizza, isLoading ->
+    val orderedPizzas = allPizzas.map { allPizzas ->
+        allPizzas.filter { it.num > 0 }
+    }
+    val isPizzasEmpty = combine(orderedPizzas, isLoading) { filteredPizza, isLoading ->
         filteredPizza.isEmpty() && !isLoading
     }
-    private val yeelight = YeelightManager()
+
+    val totalCost = orderedPizzas.map { it.sumOf {
+        it.price * it.num
+    }
+
+    }
+
+    // private val yeelight = YeelightManager()
     private val devClient = DevService.create()
 
     init {
@@ -35,7 +35,7 @@ class MainViewModel : ViewModel() {
             val margherita = allPizzas.firstOrNull() {
                 it.name.toLowerCase() == "margherita"
             }
-            if (margherita != null) redLightOn(margherita)
+//            if (margherita != null) redLightOn(margherita)
 
         }.launchIn(viewModelScope)
     }
@@ -81,23 +81,25 @@ class MainViewModel : ViewModel() {
         }
     }
 
-    fun recapPizza() {
-        _isFiltered.value = !_isFiltered.value
-    }
+//    Swicth pulsante 1 versione
+//    fun recapPizza() {
+//        _isFiltered.value = !_isFiltered.value
+//    }
 
-    fun redLightOn(item: NumPizzaDetail) {
-        // NetworkOnMainThreadException -> coroutine non può funzionare sul main thread e va spostata con (context = Dispatchers.IO)
-        viewModelScope.launch(context = Dispatchers.IO) {
-            if (item.name.toLowerCase() == "margherita") {
-                if (item.num >= 1) {
-                    yeelight.studio1().setPower(true)
-                    yeelight.studio1().setColorRgb(0xFF0000)
-                } else {
-                    yeelight.studio1().setWhiteTemperature(5000)
-                }
-            }
-        }
-    }
+    //LightOn only in local WiFi - 2Fix
+//    fun redLightOn(item: NumPizzaDetail) {
+//        // NetworkOnMainThreadException -> coroutine non può funzionare sul main thread e va spostata con (context = Dispatchers.IO)
+//        viewModelScope.launch(context = Dispatchers.IO) {
+//            if (item.name.toLowerCase() == "margherita") {
+//                if (item.num >= 1) {
+//                    yeelight.studio1().setPower(true)
+//                    yeelight.studio1().setColorRgb(0xFF0000)
+//                } else {
+//                    yeelight.studio1().setWhiteTemperature(5000)
+//                }
+//            }
+//        }
+//    }
 }
 
 data class NumPizzaDetail(
