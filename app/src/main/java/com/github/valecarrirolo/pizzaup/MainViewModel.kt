@@ -20,10 +20,10 @@ class MainViewModel : ViewModel() {
         filteredPizza.isEmpty() && !isLoading
     }
 
-    val totalCost = orderedPizzas.map { it.sumOf {
-        it.price * it.num
-    }
-
+    val totalCost = orderedPizzas.map {
+        it.sumOf {
+            it.price * it.num
+        }
     }
 
     // private val yeelight = YeelightManager()

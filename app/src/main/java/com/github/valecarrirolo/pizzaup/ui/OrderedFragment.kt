@@ -38,6 +38,7 @@ class OrderedFragment : Fragment() {
         // Message No Pizza Selected / Empty list
         viewModel.isPizzasEmpty.asLiveData().observe(viewLifecycleOwner) {isPizzasEmpty: Boolean ->
             binding.noneSelected.isVisible = isPizzasEmpty
+            binding.totalCost.isVisible = !isPizzasEmpty
         }
 
         // RecyclerView List
@@ -50,7 +51,7 @@ class OrderedFragment : Fragment() {
 
         //Total Cost ordered pizzas
         viewModel.totalCost.asLiveData().observe(viewLifecycleOwner){
-            binding.totalCost.text = formatPrice(it)
+            binding.totalCost.text = "TOTALE: " + formatPrice(it)
         }
 
         return binding.root

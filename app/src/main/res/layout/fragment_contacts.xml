@@ -7,17 +7,88 @@
     tools:context=".ui.ContactsFragment">
 
     <TextView
-        android:id="@+id/text_home"
+        android:id="@+id/pizzeriaName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginHorizontal="8dp"
+        android:layout_marginVertical="8dp"
+        android:background="?attr/colorSecondary"
+        android:fontFamily="@font/advent_pro_bold"
+        android:paddingVertical="8dp"
+        android:text="Pomodoro &amp; Basilico"
         android:textAlignment="center"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:textAllCaps="true"
+        android:textColor="?attr/colorOnPrimary"
+        android:textSize="40sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:text="toDO Contacts" />
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/pizzeriaSubtitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/advent_pro_bold"
+        android:paddingVertical="8dp"
+        android:text="@string/premiata_pizzeria_napoletana"
+        android:textAlignment="center"
+        android:textAllCaps="true"
+        android:textColor="?attr/colorPrimaryVariant"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/pizzeriaName" />
+
+    <TextView
+        android:id="@+id/pizzeriaWho"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+       android:layout_marginHorizontal="8dp"
+        android:fontFamily="@font/advent_pro_light"
+        android:paddingTop="8dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/premiata_pizzeria_napoletana"
+        android:textAlignment="center"
+        android:textColor="?attr/colorSecondaryVariant"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/pizzeriaSubtitle" />
+
+    <TextView
+        android:id="@+id/pizzeriaWho2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/advent_pro_light"
+        android:paddingHorizontal="8dp"
+        android:paddingVertical="8dp"
+        android:text="@string/pizzeriaStory"
+        android:textAlignment="textStart"
+        android:textColor="?attr/colorPrimaryVariant"
+        android:textSize="13sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/pizzeriaWho" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@+id/pizzeriaWho">
+    <
+    /LinearLayout>
+
+    <com.google.android.gms.maps.MapView
+        android:id="@+id/mapView"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        tools:layout_editor_absoluteX="-8dp"
+        tools:layout_editor_absoluteY="314dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

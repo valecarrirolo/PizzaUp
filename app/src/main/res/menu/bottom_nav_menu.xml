@@ -20,5 +20,9 @@
         android:id="@+id/navPay"
         android:icon="@drawable/ic_cashpay"
         android:title="@string/title_pay" />
+    <item
+        android:id="@+id/navDelivery"
+        android:icon="@drawable/ic_delivery2"
+        android:title="Delivery"/>
 
 </menu>

@@ -8,7 +8,7 @@
     tools:context=".ui.PizzaListFragment">
 
     <ProgressBar
-        android:id="@+id/progress_loader"
+        android:id="@+id/progressLoader"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:progressBackgroundTintMode="?attr/colorPrimary"

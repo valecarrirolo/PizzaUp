@@ -28,5 +28,10 @@
         android:name="com.github.valecarrirolo.pizzaup.ui.PayFragment"
         android:label="@string/title_pay"
         tools:layout="@layout/fragment_pay" />
+    <fragment
+        android:id="@+id/navDelivery"
+        android:name="com.github.valecarrirolo.pizzaup.ui.DeliveryFragment"
+        android:label="Delivery"
+        tools:layout="@layout/fragment_delivery" />
 
 </navigation>

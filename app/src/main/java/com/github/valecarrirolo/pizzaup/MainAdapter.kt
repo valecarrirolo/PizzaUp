@@ -32,6 +32,7 @@ class MainAdapter(val viewmodel: MainViewModel) : RecyclerView.Adapter<MainViewH
         viewHolder.binding.price.text = formatPrice(item.price)
         viewHolder.binding.description.text = item.ingredients.joinToString()
         viewHolder.binding.numpizza.text = item.num.toString()
+        viewHolder.binding.numpizza.isVisible = item.num > 0
         viewHolder.binding.root.setOnClickListener {
             viewmodel.addPizza(item)
         }
@@ -41,6 +42,9 @@ class MainAdapter(val viewmodel: MainViewModel) : RecyclerView.Adapter<MainViewH
                 if (item.num >= 1) R.color.lime_200_light else R.color.yellow_50
             )
         )
+        viewHolder.binding.root.cardElevation =
+            if (item.num >= 1) context.toPixelFromDip(2f) else 0f
+
         viewHolder.binding.title.setTextColor(
             ContextCompat.getColor(
                 context,

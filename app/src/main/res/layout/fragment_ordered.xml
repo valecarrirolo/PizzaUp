@@ -8,7 +8,7 @@
     tools:context=".ui.OrderedFragment">
 
     <ProgressBar
-        android:id="@+id/progress_loader"
+        android:id="@+id/progressLoader"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:progressBackgroundTintMode="?attr/colorPrimary"
@@ -38,34 +38,61 @@
         android:clipToPadding="false"
         android:paddingVertical="16dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        tools:listitem="@layout/item_pizza">
+        tools:listitem="@layout/item_pizza"></androidx.recyclerview.widget.RecyclerView>
 
-    </androidx.recyclerview.widget.RecyclerView>
-
-    <TextView
-        android:id="@+id/totalCost"
+    <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:background="?attr/colorSecondary"
-        android:fontFamily="@font/advent_pro_bold"
-        android:textAlignment="center"
-        android:textAllCaps="true"
-        android:textColor="?attr/colorOnPrimary"
-        android:textSize="40sp"
-        android:textStyle="bold"
-        android:text="$$$ recap" />
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginVertical="16dp"
+        app:cardBackgroundColor="?attr/totalCostBackground">
+
+        <TextView
+            android:id="@+id/totalCost"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginVertical="16dp"
+            android:fontFamily="@font/advent_pro_bold"
+            android:textAlignment="center"
+            android:textAllCaps="true"
+            android:textColor="?attr/colorPrimary"
+            android:textSize="40sp"
+            android:textStyle="bold"
+            android:visibility="gone"
+            tools:text="$$$ recap"
+            tools:visibility="visible" />
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <!--    <TextView-->
+    <!--        android:id="@+id/totalCost"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_marginHorizontal="16dp"-->
+    <!--        android:layout_marginVertical="16dp"-->
+    <!--        android:background="?attr/colorPrimary"-->
+    <!--        android:fontFamily="@font/advent_pro_bold"-->
+    <!--        android:textAlignment="center"-->
+    <!--        android:textAllCaps="true"-->
+    <!--        android:textColor="?attr/colorOnPrimary"-->
+    <!--        android:textSize="40sp"-->
+    <!--        android:textStyle="bold"-->
+    <!--        android:visibility="gone"-->
+    <!--        tools:text="$$$ recap"-->
+    <!--        tools:visibility="visible" />-->
 
     <Button
         android:id="@+id/buttonPayment"
+        style="@style/Widget.MaterialComponents.Button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
+        android:layout_marginHorizontal="16dp"
+        android:text="Pay"
         android:textAlignment="center"
         android:textSize="14sp"
         android:textStyle="bold"
-        app:backgroundTint="?attr/colorPrimaryVariant"
-        tools:text="Pay" />
+        app:backgroundTint="?attr/colorSecondary" />
 
 
 </LinearLayout>

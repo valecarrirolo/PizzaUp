@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.PayFragment">
+    tools:context=".ui.DeliveryFragment">
 
     <TextView
         android:id="@+id/text_home"
@@ -19,5 +19,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="toDO PAYMENTS"/>
+        tools:text="toDO Delivery"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
