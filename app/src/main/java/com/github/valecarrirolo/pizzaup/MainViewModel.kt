@@ -2,9 +2,13 @@ package com.github.valecarrirolo.pizzaup
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.github.omarmiatello.yeelight.YeelightManager
+import com.github.omarmiatello.yeelight.home.studio1
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 import java.io.IOException
+import java.lang.Exception
 
 class MainViewModel : ViewModel() {
     private val _allPizzas = MutableStateFlow<List<NumPizzaDetail>>(emptyList())
@@ -20,22 +24,22 @@ class MainViewModel : ViewModel() {
         filteredPizza.isEmpty() && !isLoading
     }
 
-    val totalCost = orderedPizzas.map {
-        it.sumOf {
-            it.price * it.num
-        }
+    val totalCost = orderedPizzas.map { orderedPizzas ->
+        orderedPizzas.sumOf { it.price * it.num }
     }
 
-    // private val yeelight = YeelightManager()
+    private val yeelight = YeelightManager()
     private val devClient = DevService.create()
 
     init {
         getPizza()
         _allPizzas.onEach { allPizzas ->
-            val margherita = allPizzas.firstOrNull() {
+            allPizzas.firstOrNull() {
                 it.name.toLowerCase() == "margherita"
+            }?.also { margherita ->
+                // ?.also non chiama also se l'oggetto precedente è null
+                redLightOn(margherita)
             }
-//            if (margherita != null) redLightOn(margherita)
 
         }.launchIn(viewModelScope)
     }
@@ -86,20 +90,24 @@ class MainViewModel : ViewModel() {
 //        _isFiltered.value = !_isFiltered.value
 //    }
 
-    //LightOn only in local WiFi - 2Fix
-//    fun redLightOn(item: NumPizzaDetail) {
-//        // NetworkOnMainThreadException -> coroutine non può funzionare sul main thread e va spostata con (context = Dispatchers.IO)
-//        viewModelScope.launch(context = Dispatchers.IO) {
-//            if (item.name.toLowerCase() == "margherita") {
-//                if (item.num >= 1) {
-//                    yeelight.studio1().setPower(true)
-//                    yeelight.studio1().setColorRgb(0xFF0000)
-//                } else {
-//                    yeelight.studio1().setWhiteTemperature(5000)
-//                }
-//            }
-//        }
-//    }
+    //LightOn only in local WiFi - Try-catch exception
+    fun redLightOn(item: NumPizzaDetail) {
+        // NetworkOnMainThreadException -> coroutine non può funzionare sul main thread e va spostata con (context = Dispatchers.IO)
+        viewModelScope.launch(context = Dispatchers.IO) {
+            try {
+                if (item.name.toLowerCase() == "margherita") {
+                    if (item.num >= 1) {
+                        yeelight.studio1().setPower(true)
+                        yeelight.studio1().setColorRgb(0xFF0000)
+                    } else {
+                        yeelight.studio1().setWhiteTemperature(5000)
+                    }
+                }
+            } catch (e: Exception){
+                e.printStackTrace()
+            }
+        }
+    }
 }
 
 data class NumPizzaDetail(
