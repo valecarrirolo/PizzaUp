@@ -26,40 +26,50 @@ class MainAdapter(val viewmodel: MainViewModel) : RecyclerView.Adapter<MainViewH
     // Replace the contents of a view (invoked by the layout manager)
     override fun onBindViewHolder(viewHolder: MainViewHolder, position: Int) {
         val item = dataSet[position]
-        val context = viewHolder.binding.root.context
-        viewHolder.binding.title.text = item.name
-        viewHolder.binding.photo.load("https://raw.githubusercontent.com/nemsi85/dev-server/master/${item.photo}")
-        viewHolder.binding.price.text = formatPrice(item.price)
-        viewHolder.binding.description.text = item.ingredients.joinToString()
-        viewHolder.binding.numPizza.text = item.num.toString()
-        viewHolder.binding.numPizza.isVisible = item.num > 0
-        viewHolder.binding.root.setOnClickListener {
-            viewmodel.addPizza(item)
+        val binding = viewHolder.binding
+        val context = binding.root.context
+        binding.photo.load("https://raw.githubusercontent.com/nemsi85/dev-server/master/${item.photo}")
+        binding.price.text = formatPrice(item.price)
+        binding.description.text = item.ingredients.joinToString()
+        binding.title.apply {
+            text = item.name
+            setTextColor(
+                ContextCompat.getColor(
+                    context,
+                    if (item.num >= 1) R.color.deep_orange_800_dark else R.color.black
+                )
+            )
         }
-        viewHolder.binding.root.setBackgroundColor(
-            ContextCompat.getColor(
-                context,
-                if (item.num >= 1) R.color.lime_200_light else R.color.yellow_50
-            )
-        )
-        viewHolder.binding.root.cardElevation =
-            if (item.num >= 1) context.toPixelFromDip(2f) else 0f
 
-        viewHolder.binding.title.setTextColor(
-            ContextCompat.getColor(
-                context,
-                if (item.num >= 1) R.color.deep_orange_800_dark else R.color.black
+        binding.numPizza.apply {
+            text = item.num.toString()
+            isVisible = item.num > 0
+            setTextColor(
+                ContextCompat.getColor(
+                    context,
+                    if (item.num >= 1) R.color.deep_orange_800_dark else R.color.yellow_50
+                )
             )
-        )
-        viewHolder.binding.numPizza.setTextColor(
-            ContextCompat.getColor(
-                context,
-                if (item.num >= 1) R.color.deep_orange_800_dark else R.color.yellow_50
+        }
+
+        binding.lessPizza.apply {
+            isVisible = item.num > 0
+            setOnClickListener {
+                viewmodel.removePizza(item)
+            }
+        }
+
+        binding.root.apply {
+            cardElevation = if (item.num >= 1) context.toPixelFromDip(2f) else 0f
+            setOnClickListener {
+                viewmodel.addPizza(item)
+            }
+            setBackgroundColor(
+                ContextCompat.getColor(
+                    context,
+                    if (item.num >= 1) R.color.lime_200_light else R.color.yellow_50
+                )
             )
-        )
-        viewHolder.binding.lessPizza.isVisible = item.num > 0
-        viewHolder.binding.lessPizza.setOnClickListener {
-            viewmodel.removePizza(item)
         }
     }
 
