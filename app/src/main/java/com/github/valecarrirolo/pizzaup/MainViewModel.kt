@@ -1,5 +1,6 @@
 package com.github.valecarrirolo.pizzaup
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.github.omarmiatello.yeelight.YeelightManager
@@ -8,7 +9,6 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 import java.io.IOException
-import java.lang.Exception
 
 class MainViewModel : ViewModel() {
     private val _allPizzas = MutableStateFlow<List<NumPizzaDetail>>(emptyList())
@@ -103,8 +103,8 @@ class MainViewModel : ViewModel() {
                         yeelight.studio1().setWhiteTemperature(5000)
                     }
                 }
-            } catch (e: Exception){
-                e.printStackTrace()
+            } catch (e: Exception) {
+                Log.w("yeelight", "yeelight.studio1() not found?", e)
             }
         }
     }
