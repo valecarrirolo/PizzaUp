@@ -29,7 +29,7 @@ class MainAdapter(val viewmodel: MainViewModel) : RecyclerView.Adapter<MainViewH
         val binding = viewHolder.binding
         val context = binding.root.context
         binding.photo.load("https://raw.githubusercontent.com/nemsi85/dev-server/master/${item.photo}")
-        binding.price.text = formatPrice(item.price)
+        binding.price.text = item.price.formatPrice()
         binding.description.text = item.ingredients.joinToString()
         binding.title.apply {
             text = item.name

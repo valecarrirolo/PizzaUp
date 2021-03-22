@@ -44,7 +44,7 @@ class OrderedFragment : Fragment() {
 
             //Total Cost ordered pizzas
             viewModel.totalCost.asLiveData().observe(viewLifecycleOwner) {
-                binding.totalCost.text = "TOTALE: " + formatPrice(it)
+                binding.totalCost.text = "TOTALE: " + it.formatPrice()
             }
         }
         .root
