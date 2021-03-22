@@ -31,8 +31,8 @@ class MainAdapter(val viewmodel: MainViewModel) : RecyclerView.Adapter<MainViewH
         viewHolder.binding.photo.load("https://raw.githubusercontent.com/nemsi85/dev-server/master/${item.photo}")
         viewHolder.binding.price.text = formatPrice(item.price)
         viewHolder.binding.description.text = item.ingredients.joinToString()
-        viewHolder.binding.numpizza.text = item.num.toString()
-        viewHolder.binding.numpizza.isVisible = item.num > 0
+        viewHolder.binding.numPizza.text = item.num.toString()
+        viewHolder.binding.numPizza.isVisible = item.num > 0
         viewHolder.binding.root.setOnClickListener {
             viewmodel.addPizza(item)
         }
@@ -51,14 +51,14 @@ class MainAdapter(val viewmodel: MainViewModel) : RecyclerView.Adapter<MainViewH
                 if (item.num >= 1) R.color.deep_orange_800_dark else R.color.black
             )
         )
-        viewHolder.binding.numpizza.setTextColor(
+        viewHolder.binding.numPizza.setTextColor(
             ContextCompat.getColor(
                 context,
                 if (item.num >= 1) R.color.deep_orange_800_dark else R.color.yellow_50
             )
         )
-        viewHolder.binding.lesspizza.isVisible = item.num > 0
-        viewHolder.binding.lesspizza.setOnClickListener {
+        viewHolder.binding.lessPizza.isVisible = item.num > 0
+        viewHolder.binding.lessPizza.setOnClickListener {
             viewmodel.removePizza(item)
         }
     }

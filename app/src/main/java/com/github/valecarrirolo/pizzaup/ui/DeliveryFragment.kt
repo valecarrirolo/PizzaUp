@@ -13,12 +13,13 @@ class DeliveryFragment : Fragment() {
     val viewModel by activityViewModels<MainViewModel>()
 
     override fun onCreateView(
-            inflater: LayoutInflater,
-            container: ViewGroup?,
-            savedInstanceState: Bundle?
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View? {
         //View Binding
         val binding = FragmentDeliveryBinding.inflate(inflater)
 
         return binding.root
     }
+}
