@@ -21,6 +21,10 @@ class ContactsFragment : Fragment() {
         //View Binding
         val binding = FragmentContactsBinding.inflate(inflater)
 
+
+
+
         return binding.root
+
     }
 }

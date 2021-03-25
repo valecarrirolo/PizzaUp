@@ -16,5 +16,6 @@
         <!-- Customize your theme here. -->
         <item name="android:colorBackground">@color/yellow_50</item>
         <item name="totalCostBackground">@color/lime_200_light</item>
+
     </style>
 </resources>
