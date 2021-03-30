@@ -50,9 +50,9 @@ dependencies {
     implementation "io.coil-kt:coil:1.1.0"
 
     // Livedata
-    implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.3.1"
-    implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.3.1"
-    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.0"
+    implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.4.0-alpha01"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.4.0-alpha01"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.0-alpha01"
 
     // Networking
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
