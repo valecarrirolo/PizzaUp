@@ -4,8 +4,7 @@ import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.github.omarmiatello.yeelight.YeelightManager
-import com.github.omarmiatello.yeelight.home.studio1
-import kotlinx.coroutines.Dispatchers
+import com.github.omarmiatello.yeelight.home.camera1
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 import java.io.IOException
@@ -93,14 +92,14 @@ class MainViewModel : ViewModel() {
     //LightOn only in local WiFi - Try-catch exception
     fun redLightOn(item: NumPizzaDetail) {
         // NetworkOnMainThreadException -> coroutine non può funzionare sul main thread e va spostata con (context = Dispatchers.IO)
-        viewModelScope.launch(context = Dispatchers.IO) {
+        viewModelScope.launch {
             try {
                 if (item.name.toLowerCase() == "margherita") {
-                    if (item.num >= 1) {
-                        yeelight.studio1().setPower(true)
-                        yeelight.studio1().setColorRgb(0xFF0000)
+              if (item.num >= 1) {
+                        yeelight.camera1().setPower(true)
+                        yeelight.camera1().setColorRgb(0xFF0000)
                     } else {
-                        yeelight.studio1().setWhiteTemperature(5000)
+                        yeelight.camera1().setWhiteTemperature(5000)
                     }
                 }
             } catch (e: Exception) {
