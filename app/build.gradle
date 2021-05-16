@@ -1,7 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
-    id 'org.jetbrains.kotlin.plugin.serialization' version '1.4.30'
+    id 'org.jetbrains.kotlin.plugin.serialization' version '1.4.32'
 }
 
 android {
@@ -41,7 +41,7 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.2.0'
 
     // Coroutines
-    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.4.2'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.4.3'
 
     // Design
     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
@@ -66,14 +66,14 @@ dependencies {
     implementation 'androidx.navigation:navigation-ui-ktx:2.3.5'
     implementation 'androidx.navigation:navigation-fragment-ktx:2.3.5'
     implementation 'androidx.navigation:navigation-ui-ktx:2.3.5'
-    implementation 'com.google.android.gms:play-services-maps:17.0.0'
+    implementation 'com.google.android.gms:play-services-maps:17.0.1'
 
     // Test
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 
-    // Yeelight Kotlin library
-    implementation 'com.github.omarmiatello.yeelight:core:1.0.4'
-    implementation 'com.github.omarmiatello.yeelight:home-ktx:1.0.4'
+//    // Yeelight Kotlin library
+//    implementation 'com.github.omarmiatello.yeelight:core:1.0.4'
+//    implementation 'com.github.omarmiatello.yeelight:home-ktx:1.0.4'
 }

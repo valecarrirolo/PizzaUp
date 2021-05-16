@@ -1,10 +1,7 @@
 package com.github.valecarrirolo.pizzaup
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.github.omarmiatello.yeelight.YeelightManager
-import com.github.omarmiatello.yeelight.home.camera1
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 import java.io.IOException
@@ -27,7 +24,7 @@ class MainViewModel : ViewModel() {
         orderedPizzas.sumOf { it.price * it.num }
     }
 
-    private val yeelight = YeelightManager()
+    //    private val yeelight = YeelightManager()
     private val devClient = DevService.create()
 
     init {
@@ -37,7 +34,7 @@ class MainViewModel : ViewModel() {
                 it.name.toLowerCase() == "margherita"
             }?.also { margherita ->
                 // ?.also non chiama also se l'oggetto precedente è null
-                redLightOn(margherita)
+//                redLightOn(margherita)
             }
 
         }.launchIn(viewModelScope)
@@ -89,24 +86,24 @@ class MainViewModel : ViewModel() {
 //        _isFiltered.value = !_isFiltered.value
 //    }
 
-    //LightOn only in local WiFi - Try-catch exception
-    fun redLightOn(item: NumPizzaDetail) {
-        // NetworkOnMainThreadException -> coroutine non può funzionare sul main thread e va spostata con (context = Dispatchers.IO)
-        viewModelScope.launch {
-            try {
-                if (item.name.toLowerCase() == "margherita") {
-              if (item.num >= 1) {
-                        yeelight.camera1().setPower(true)
-                        yeelight.camera1().setColorRgb(0xFF0000)
-                    } else {
-                        yeelight.camera1().setWhiteTemperature(5000)
-                    }
-                }
-            } catch (e: Exception) {
-                Log.w("yeelight", "yeelight.studio1() not found?", e)
-            }
-        }
-    }
+//    //LightOn only in local WiFi - Try-catch exception
+//    fun redLightOn(item: NumPizzaDetail) {
+//        // NetworkOnMainThreadException -> coroutine non può funzionare sul main thread e va spostata con (context = Dispatchers.IO)
+//        viewModelScope.launch {
+//            try {
+//                if (item.name.toLowerCase() == "margherita") {
+//              if (item.num >= 1) {
+//                        yeelight.camera1().setPower(true)
+//                        yeelight.camera1().setColorRgb(0xFF0000)
+//                    } else {
+//                        yeelight.camera1().setWhiteTemperature(5000)
+//                    }
+//                }
+//            } catch (e: Exception) {
+//                Log.w("yeelight", "yeelight.studio1() not found?", e)
+//            }
+//        }
+//    }
 }
 
 data class NumPizzaDetail(
