@@ -31,7 +31,7 @@ class MainViewModel : ViewModel() {
         getPizza()
         _allPizzas.onEach { allPizzas ->
             allPizzas.firstOrNull() {
-                it.name.toLowerCase() == "margherita"
+                it.name.lowercase() == "margherita"
             }?.also { margherita ->
                 // ?.also non chiama also se l'oggetto precedente è null
 //                redLightOn(margherita)
